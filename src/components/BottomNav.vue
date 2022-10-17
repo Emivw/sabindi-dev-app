@@ -1,7 +1,7 @@
 <template>
-  <v-bottom-navigation v-model="value">
+  <v-bottom-navigation fixed color="orange" v-model="value">
     <v-btn value="recent" v-for="item in items" :key="item.title" :to="item.to">
-      <span{{item.title}}</span>
+      <span>{{item.title}}</span>
 
       <v-icon>{{item.icon}}</v-icon>
     </v-btn>
@@ -22,5 +22,13 @@
 </script>
 
 <style  scoped>
+.v-bottom-navigation{
+  background-color:black;
+}
 
+::before, ::after {
+    text-decoration: inherit;
+    color: white;
+    vertical-align: inherit;
+}
 </style>

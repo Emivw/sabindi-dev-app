@@ -1,16 +1,16 @@
 <template>
     <v-card>
-        <v-toolbar color="orange" dark flat prominent>
-            <v-text-field append-icon="mdi-microphone"  color="black" class="mx-4" flat hide-details label="Search"
+        <v-toolbar  dark flat prominent>
+            <v-text-field append-icon="mdi-microphone"  color="orange" class="mx-4" flat hide-details label="Search"
                 prepend-inner-icon="mdi-magnify" solo-inverted></v-text-field>
 
-            <template v-slot:extension>
+            <!-- <template v-slot:extension>
                 <v-tabs v-model="tabs" centered>
                     <v-tab v-for="item in items" :key="item">
                         {{ item.title }}
                     </v-tab>
                 </v-tabs>
-            </template>
+            </template> -->
         </v-toolbar>
         <v-card id="create">
             <v-container fluid>
@@ -19,7 +19,7 @@
             <v-speed-dial v-model="fab" :top="top" :bottom="bottom" :right="right" :left="left" :direction="direction"
                 :open-on-hover="hover" :transition="transition">
                 <template v-slot:activator>
-                    <v-btn  v-model="fab" color="black darken-2" class="overflow" dark fab>
+                    <v-btn  v-model="fab" color="orange darken-2" class="overflow" dark fab>
                         <v-icon v-if="fab">
                             mdi-close
                         </v-icon>
@@ -29,13 +29,10 @@
                         <v-icon v-else-if="pencil">
                         mdi-pencil
                         </v-icon>
-                        <v-icon v-else-if="plus">
-                        mdi-plus
-                        </v-icon>
                         <v-icon v-else-if="deletes">
                         mdi-delete
                         </v-icon>
-                        <v-icon color="" v-else-if="!dialog">
+                        <v-icon color="black" class="account" v-else-if="!dialog">
                             mdi-account-circle
                         </v-icon>
                     </v-btn>
@@ -111,9 +108,6 @@
                 </v-btn>
             </v-speed-dial>
         </v-card>
-
-        <v-tabs-items v-model="tabs">
-            <v-tab-item v-for="item in items" :key="item">
                 <v-card flat>
                     <v-data-table v-model="selected" :headers="headers" :items="desserts" :single-select="singleSelect"
                         item-key="name" show-select class="elevation-1">
@@ -121,15 +115,19 @@
                             <v-switch v-model="singleSelect"  label="Single select" class="pa-3"></v-switch>
                         </template>
                     </v-data-table>
+                    <BottomNav/>
                 </v-card>
+
+        <!-- <v-tabs-items v-model="tabs">
+            <v-tab-item v-for="item in items" :key="item">
             </v-tab-item>
-        </v-tabs-items>
-        <BottomNav/>
+        </v-tabs-items> -->
+     
     </v-card>
 </template>
 
 <script>
-  import BottomNav from '../components/BottomNav'
+import BottomNav from '../components/BottomNav'
 export default {
     components: {
       BottomNav,
@@ -317,6 +315,20 @@ export default {
     display: none !important;
 }
 
+.account{
+    color: orange !important;
+}
+
+.mdi-account-circle::before {
+    content: "\F0009";
+    color: black !important;
+}
+
+.mdi-microphone::before {
+    content: "\F036C";
+    color: orange !important;
+}
+
 
 .account{
     color: orange !important;
@@ -327,18 +339,14 @@ export default {
     color: black !important;
 }
 
-.v-application .primary--text {
-    color: orange !important;
-    caret-color: #1976d2 !important;
-}
 
 .mdi-microphone::before {
     content: "\F036C";
     color: orange !important;
 }
 
-.v-toolbar__content{
-  background-color:black;
-  color:white;
+.v-application .primary--text {
+    color: orange !important;
+    caret-color: #1976d2 !important;
 }
 </style>

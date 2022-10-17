@@ -1,26 +1,24 @@
 <template>
     <v-container class="grey lighten-5">
-    <v-row>
+    <v-row class="mb-6">
     <v-col  v-for="tile in tiles" :key="tile.title">
       <v-card
     class="mx-auto"
     max-width="344"
-  >      <v-btn value="recent">
+    color="black"
+  >      <v-btn value="recent" color="orange">
       <v-icon>{{tile.icon}}</v-icon>
     </v-btn>
     <v-card-text>
 
-      <p class="text-h4 text--primary">
+      <p class="text-h4">
        {{tile.title}}
       </p>
-      <div class="text--primary">
-{{tile.text}}
-      </div>
     </v-card-text>
     <v-card-actions>
       <v-btn
         text
-        color="deep-purple accent-3"
+        color="orange accent-3"
         :to="tile.to"
       >
         Learn More
@@ -29,8 +27,8 @@
   </v-card>
     </v-col>
 
-    </v-row>
-  <BottomNav/>
+    </v-row>  
+    <BottomNav/>
   </v-container>
 </template>
 
@@ -38,6 +36,9 @@
   import BottomNav from '../components/BottomNav'
 
   export default {
+    components: {
+      BottomNav,
+    },
     name: 'Home',
     data: () => ({ 
       drawer: null,
@@ -124,9 +125,52 @@
         to: '/costs'
       }
     ],
-    }),
-    components: {
-      BottomNav,
-    },
+    })
   }
 </script>
+<style scoped> 
+.mdi{
+  color: orange !important;
+}
+.v-application .text-h4 {
+    font-size: 2.125rem !important;
+    font-weight: 400;
+    color: white;
+    line-height: 2.5rem;
+    letter-spacing: 0.0073529412em !important;
+    font-family: "Roboto", sans-serif !important;
+}
+.mb-6{
+  margin-bottom: 3.5rem !important;
+}
+
+.account{
+    color: orange !important;
+}
+
+.mdi-account-circle::before {
+    content: "\F0009";
+    color: black !important;
+}
+
+.v-application .primary--text {
+    color: orange !important;
+    caret-color: #1976d2 !important;
+}
+
+.mdi-microphone::before {
+    content: "\F036C";
+    color: orange !important;
+}
+
+.mdi:before, .mdi-set {
+    display: inline-block;
+    font: normal normal normal 24px/1 "Material Design Icons";
+    font-size: inherit;
+    color: white;
+    text-rendering: auto;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+</style>

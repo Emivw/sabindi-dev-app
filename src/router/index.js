@@ -41,7 +41,63 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited. 
 component: () => import(/* webpackChunkName: "about" */ '../views/CRMView.vue')
-  }
+  },
+  {
+    path: '/po',
+    name: 'po',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited. 
+component: () => import(/* webpackChunkName: "about" */ '../views/POView.vue')
+  },
+  {
+    path: '/wo',
+    name: 'wo',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited. 
+component: () => import(/* webpackChunkName: "about" */ '../views/WOView.vue')
+  },
+  {
+    path: '/quotes',
+    name: 'quotes',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited. 
+component: () => import(/* webpackChunkName: "about" */ '../views/QuotesView.vue')
+  },
+  {
+    path: '/materials',
+    name: 'materials',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited. 
+component: () => import(/* webpackChunkName: "about" */ '../views/MaterialsView.vue')
+  },
+  {
+    path: '/inventory',
+    name: 'inventory',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited. 
+component: () => import(/* webpackChunkName: "about" */ '../views/InventoryView.vue')
+  },
+  {
+    path: '/reports',
+    name: 'reports',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited. 
+component: () => import(/* webpackChunkName: "about" */ '../views/ReportsView.vue')
+  },
+  {
+    path: '/costs',
+    name: 'costs',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited. 
+component: () => import(/* webpackChunkName: "about" */ '../views/CostsView.vue')
+  },
 ]
 
 const router = new VueRouter({
