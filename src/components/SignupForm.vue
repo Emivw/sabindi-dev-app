@@ -1,5 +1,6 @@
 <template>
 <body>
+  <div id="particles-js" @load="particles()"></div>
   <div class="container" id="container">
     <div class="form-container sign-up-container">
       <form>
@@ -7,7 +8,7 @@
         <span>or use your email for registration</span>
         <input type="text" placeholder="Name" />
         <input type="text" placeholder="Surname" />
-        <input type="email" id="signUpEmail"placeholder="Email" />
+        <input type="email" id="signUpEmail" placeholder="Email" />
         <input type="password" placeholder="Password" />
         <button type="submit">Sign Up</button>
       </form>
@@ -166,8 +167,8 @@ a {
 
 button {
   border-radius: 20px;
-  border: 1px solid #ff4b2b;
-  background-color: #ff4b2b;
+  border: 1px solid orange;
+  background-color: orange;
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
@@ -281,9 +282,9 @@ input {
 }
 
 .overlay {
-  background: #ff416c;
-  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-  background: linear-gradient(to right, #ff4b2b, #ff416c);
+  background:orange;
+  background: -webkit-linear-gradient(to right, orange, black);
+  background: linear-gradient(to right, orange, black);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
@@ -370,6 +371,16 @@ footer i {
 footer a {
   color: #3c97bf;
   text-decoration: none;
+}
+
+@media(max-width:425px){
+  .container{
+    min-height:480px;
+  }
+
+  button{
+    padding: 10px 10px;
+  }
 }
 
 </style>

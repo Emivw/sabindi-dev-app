@@ -4,6 +4,7 @@
       v-model="drawer"
       app
       color="black"
+      v-if="isLoggedIn"
     > 
     <v-list-item class="backgrd"  color="white">
         <v-list-item-content>
@@ -36,7 +37,7 @@
     </v-navigation-drawer>
 
     <v-app-bar app>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon  v-if="isLoggedIn" @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title>Sabindi Global Group</v-toolbar-title>
     </v-app-bar>
@@ -90,7 +91,7 @@ import BottomNav from '@/components/BottomNav.vue'
 
 .mdi-account-circle::before {
     content: "\F0009";
-    color: black !important;
+    color: orange !important;
 }
 
 .pa-3{
@@ -135,6 +136,8 @@ import BottomNav from '@/components/BottomNav.vue'
 .v-input--selection-controls__ripple{
   color:orange;
 }
+
+
 
 .v-input--selection-controls__ripple:before {
     border-radius: inherit;
@@ -209,6 +212,10 @@ import BottomNav from '@/components/BottomNav.vue'
 .mdi-cash-multiple::before {
     content: "\F0116";
     color: white !important;
+}
+
+.primary{
+  color: orange !important;
 }
 
 </style>

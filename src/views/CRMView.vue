@@ -322,10 +322,6 @@ export default {
     color: orange !important;
 }
 
-.mdi-account-circle::before {
-    content: "\F0009";
-    color: black !important;
-}
 
 .v-application .primary--text {
     color: orange !important;
