@@ -1,16 +1,15 @@
 <template>
 <body>
-  <div id="particles-js" @load="particles()"></div>
   <div class="container" id="container">
     <div class="form-container sign-up-container">
-      <form>
+      <form method="POST" >
         <h1>Create Account</h1>
         <span>or use your email for registration</span>
         <input type="text" placeholder="Name" v-modal="userName" />
         <input type="text" placeholder="Number" v-modal="userNo" />
         <input type="email" id="signUpEmail" placeholder="Email" v-modal="userEmail" />
         <input type="password" placeholder="Password" v-modal="userPassword"/>
-        <button type="submit" @click=" this.$store.dispatch('register', user)"> Sign Up </button>
+        <button type="button" @click="register()"> Sign Up </button>
       </form>
     </div>
     
@@ -52,8 +51,8 @@
     data: () => ({
       userName: '',
       userEmail: '',
-      userPassword: '',
       userNo: '',
+      userPassword: '',
       
       inputs:
        [ 
@@ -129,8 +128,9 @@
     const payload = {
       userName: this.userName,
       userEmail: this.userEmail,
-      userPassword: this.userPassword,
-      userNo: this.userNo
+      userNo: this.userNo,
+      userPassword: this.userPassword
+     
     }
     this.$store.dispatch('register', payload)
   }
