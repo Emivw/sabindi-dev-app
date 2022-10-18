@@ -6,11 +6,11 @@
       <form>
         <h1>Create Account</h1>
         <span>or use your email for registration</span>
-        <input type="text" placeholder="Name" />
-        <input type="text" placeholder="Surname" />
-        <input type="email" id="signUpEmail" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <button type="submit">Sign Up</button>
+        <input type="text" placeholder="Name" v-modal="userName" />
+        <input type="text" placeholder="Number" v-modal="userNo" />
+        <input type="email" id="signUpEmail" placeholder="Email" v-modal="userEmail" />
+        <input type="password" placeholder="Password" v-modal="userPassword"/>
+        <button type="submit" @click=" this.$store.dispatch('register', user)"> Sign Up </button>
       </form>
     </div>
     
@@ -50,6 +50,10 @@
     name: 'SignupForm',
 
     data: () => ({
+      userName: '',
+      userEmail: '',
+      userPassword: '',
+      userNo: '',
       
       inputs:
        [ 
@@ -120,6 +124,15 @@
   else{
   document.getElementById("signIn").addEventListener("click",openSignIn());
   }
+  },
+  register(){
+    const payload = {
+      userName: this.userName,
+      userEmail: this.userEmail,
+      userPassword: this.userPassword,
+      userNo: this.userNo
+    }
+    this.$store.dispatch('register', payload)
   }
 }
   }
