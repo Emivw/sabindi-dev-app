@@ -77,6 +77,9 @@ import BottomNav from '@/components/BottomNav.vue'
 </script>
 
 <style>
+.v-app-bar{
+  z-index: 1000 !important;
+}
 .v-toolbar__content{
   background-color:black;
   color:white;

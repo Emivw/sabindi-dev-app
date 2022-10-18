@@ -148,7 +148,11 @@
 </script>
 
 <style scoped>
+.conatiner{
+  overflow-y: hidden;
+}
 body {
+
   background: #f6f5f7;
   display: flex;
   justify-content: center;
@@ -156,7 +160,8 @@ body {
   flex-direction: column;
   font-family: "Montserrat", sans-serif;
   height: 100vh;
-  margin: -20px 0 50px;
+  margin: -20px 0 -19px;
+
 }
 
 h1 {
