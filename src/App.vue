@@ -4,7 +4,7 @@
       v-model="drawer"
       app
       color="black"
-      v-if="isLoggedIn"
+      v-if="user"
     > 
     <v-list-item class="backgrd"  color="white">
         <v-list-item-content>
@@ -37,14 +37,15 @@
     </v-navigation-drawer>
 
     <v-app-bar app>
-      <v-app-bar-nav-icon  v-if="isLoggedIn" @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon  v-if="user" @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title>Sabindi Global Group</v-toolbar-title>
     </v-app-bar>
 
     <v-main>
       <router-view/>
-    <BottomNav v-if="isLoggedIn"/>
+  
+    <!-- <BottomNav v-if="user"/> -->
       <!--  -->
     </v-main>
     
@@ -66,7 +67,12 @@ import BottomNav from '@/components/BottomNav.vue'
   },
     components:{
       BottomNav,
-    }
+    },
+    computed:{
+   user(){
+    return this.$store.state.user
+   }
+ }
   }
 </script>
 

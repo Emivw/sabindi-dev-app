@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 // ES6 Modules or TypeScript
 import swal from 'sweetalert';
+import router from '@/router';
 
 
 Vue.use(Vuex)
@@ -78,12 +79,13 @@ export default new Vuex.Store({
             } else {
               swal({
                 icon: "success",
-                title: `Welcome Astronaut, ${data.msg[0].userName}`,
+                title: `Welcome Builders, ${data.msg[0].userName}`,
                 buttons: "OK",
                 closeOnClickOutside: false
               })
 
               context.commit('setUser', data.msg[0]);
+              router.push('/about')
             }
           }
         })
