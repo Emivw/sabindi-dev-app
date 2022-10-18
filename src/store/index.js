@@ -24,7 +24,7 @@ export default new Vuex.Store({
     //   context.commit("setUsers", res.users);
     // },
     async register(context, payload)  {
-      fetch('http://localhost:1517/register', {
+      fetch('https://proptechapi.herokuapp.com/register', {
           method: 'POST',
           body: JSON.stringify(payload),
           headers: {
@@ -51,37 +51,44 @@ export default new Vuex.Store({
           }
         })
     },
-    // login: async (context, payload) => {
-    //   console.log("Hi")
-    //   try {
-    //     await fetch("https://sabindi.herokuapp.com/login", {
-    //       method: "POST",
-    //       body: JSON.stringify(payload),
-    //       headers: {
-    //         'Content-type': 'application/json; charset=UTF-8',
-    //       }
-    //     })
-    //       .then((res) => res.json())
-    //       .then((data) => {
+    async login(context, payload) {
+      fetch('https://proptechapi.herokuapp.com/login', {
+          method: 'POST',
+          body: JSON.stringify(payload),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.msg == 'Email does not exist') {
+            swal({
+              icon: "error",
+              title: "Email does not exist",
+              text: "Type in the proper email",
+              buttons: "Try Again"
+            })
+          } else {
+            if (data.msg == 'Incorrect Password') {
+              swal({
+                icon: "error",
+                title: "Incorrect Password",
+                buttons: "Try Again"
+              })
+            } else {
+              swal({
+                icon: "success",
+                title: `Welcome Astronaut, ${data.msg[0].userName}`,
+                buttons: "OK",
+                closeOnClickOutside: false
+              })
 
-    //         let { user } = data;
-    //         console.log(user);
-    //         context.commit("setUser", user);
-    //         // .then(() => console.log(context.state.user))
-    //         // alert('Login in success')
-    //         // router.push("/products");
-    //       })
-    //       .catch((err) => {
-    //         context.commit('setErrMsg', err);
-    //       });
+              context.commit('setUser', data.msg[0]);
+            }
+          }
+        })
 
-
-    //   } catch (e) {
-    //     context.commit('setErrMsg', e.message)
-    //   }
-
-
-    // },
+    },
   },
   modules: {
   }

@@ -5,21 +5,21 @@
       <form method="POST" >
         <h1>Create Account</h1>
         <span>or use your email for registration</span>
-        <input type="text" placeholder="Name" v-modal="userName" />
-        <input type="text" placeholder="Number" v-modal="userNo" />
-        <input type="email" id="signUpEmail" placeholder="Email" v-modal="userEmail" />
-        <input type="password" placeholder="Password" v-modal="userPassword"/>
+        <input type="text" placeholder="Name" v-model="userName" />
+        <input type="text" placeholder="Number" v-model="userNo" />
+        <input type="email" id="signUpEmail" placeholder="Email" v-model="userEmail" />
+        <input type="password" placeholder="Password" v-model="userPassword"/>
         <button type="button" @click="register()"> Sign Up </button>
       </form>
     </div>
     
     <div class="form-container sign-in-container">
-      <form onSubmit={this.handleSubmitLogin}>
+      <form method="POST" onSubmit={this.handleSubmitLogin}>
         <h1>Sign in</h1>
         <span>or use your account</span>
-        <input type="email" id="signInEmail" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <button type="submit">Sign In</button>
+        <input type="email" id="signInEmail" placeholder="Email" v-model="userEmails" />
+        <input type="password" placeholder="Password" v-model="userPasswords" />
+        <button type="button" @click="logins()">Sign In</button>
       </form>
     </div>
     
@@ -53,6 +53,8 @@
       userEmail: '',
       userNo: '',
       userPassword: '',
+      userEmails:'',
+      userPasswords:'',
       
       inputs:
        [ 
@@ -133,6 +135,13 @@
      
     }
     this.$store.dispatch('register', payload)
+  },
+  logins(){
+    const payload = {
+    userEmail:this.userEmails,
+    userPassword: this.userPasswords
+    }
+    this.$store.dispatch('login', payload)
   }
 }
   }
