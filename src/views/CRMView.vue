@@ -1,7 +1,7 @@
 <template>
     <v-card>
         <v-toolbar color="orange" dark flat prominent>
-            <v-text-field append-icon="mdi-microphone"  color="black" class="mx-4" flat hide-details label="Search"
+            <v-text-field append-icon="mdi-microphone" color="black" class="mx-4" flat hide-details label="Search"
                 prepend-inner-icon="mdi-magnify" solo-inverted></v-text-field>
 
             <template v-slot:extension>
@@ -19,21 +19,21 @@
             <v-speed-dial v-model="fab" :top="top" :bottom="bottom" :right="right" :left="left" :direction="direction"
                 :open-on-hover="hover" :transition="transition">
                 <template v-slot:activator>
-                    <v-btn  v-model="fab" color="black darken-2" class="overflow" dark fab>
+                    <v-btn v-model="fab" color="black darken-2" class="overflow" dark fab>
                         <v-icon v-if="fab">
                             mdi-close
                         </v-icon>
                         <v-icon v-else-if="plus">
-                        mdi-plus
+                            mdi-plus
                         </v-icon>
                         <v-icon v-else-if="pencil">
-                        mdi-pencil
+                            mdi-pencil
                         </v-icon>
                         <v-icon v-else-if="plus">
-                        mdi-plus
+                            mdi-plus
                         </v-icon>
                         <v-icon v-else-if="deletes">
-                        mdi-delete
+                            mdi-delete
                         </v-icon>
                         <v-icon color="" v-else-if="!dialog">
                             mdi-account-circle
@@ -59,8 +59,7 @@
                                         Name*" required></v-text-field>
                                     </v-col>
                                     <v-col cols="12" sm="6" md="4">
-                                        <v-text-field label="Email"
-                                            hint=""></v-text-field>
+                                        <v-text-field label="Email" hint=""></v-text-field>
                                     </v-col>
                                     <v-col cols="12" sm="6" md="4">
                                         <v-text-field label="Phone No*" hint="example of persistent helper text"
@@ -77,8 +76,7 @@
                                         </v-select> -->
                                     </v-col>
                                     <v-col cols="12" sm="6">
-                                        <v-autocomplete
-                                            :items="['Seller', 'buyer', 'Rental', 'Seeker', 'ToLet']"
+                                        <v-autocomplete :items="['Seller', 'buyer', 'Rental', 'Seeker', 'ToLet']"
                                             label="Interests" multiple></v-autocomplete>
                                     </v-col>
                                 </v-row>
@@ -109,28 +107,28 @@
                     <v-data-table v-model="selected" :headers="headers" :items="desserts" :single-select="singleSelect"
                         item-key="name" show-select class="elevation-1">
                         <template v-slot:top>
-                            <v-switch v-model="singleSelect"  label="Single select" class="pa-3"></v-switch>
+                            <v-switch v-model="singleSelect" label="Single select" class="pa-3"></v-switch>
                         </template>
                     </v-data-table>
                 </v-card>
             </v-tab-item>
         </v-tabs-items>
-        <BottomNav/>
+        <BottomNav />
     </v-card>
 </template>
 
 <script>
-  import BottomNav from '../components/BottomNav'
+import BottomNav from '../components/BottomNav'
 export default {
     components: {
-      BottomNav,
+        BottomNav,
     },
     data() {
         return {
             dialog: false,
             plus: false,
-            deletes:false,
-            pencil:false,
+            deletes: false,
+            pencil: false,
             direction: 'left',
             fab: false,
             fling: true,
@@ -264,23 +262,23 @@ export default {
         },
     },
     methods: {
-        clickIcon(results){
+        clickIcon(results) {
             var icon = document.getElementById('change');
-            if(results == "plus" ){
+            if (results == "plus") {
                 this.plus = true
-                this.deletes =false
+                this.deletes = false
                 this.pencil = false
                 this.dialog = true
             }
-            if(results == "pencil"){
-                 this.pencil = true
-                 this.plus = false
-                 this.dialog = true
+            if (results == "pencil") {
+                this.pencil = true
+                this.plus = false
+                this.dialog = true
             }
-             if(results == "delete"){
-                 this.deletes = true
-                 this.plus = false
-                 this.pencil = false
+            if (results == "delete") {
+                this.deletes = true
+                this.plus = false
+                this.pencil = false
             }
         }
     }
@@ -298,8 +296,8 @@ export default {
     position: relative;
 }
 
-.overflow{
-  position: static;
+.overflow {
+    position: static;
 }
 
 .container--fluid {
@@ -308,7 +306,7 @@ export default {
 }
 
 
-.account{
+.account {
     color: orange !important;
 }
 
@@ -323,8 +321,8 @@ export default {
     color: orange !important;
 }
 
-.v-toolbar__content{
-  background-color:black;
-  color:white;
+.v-toolbar__content {
+    background-color: black;
+    color: white;
 }
 </style>
