@@ -47,7 +47,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="recipient-name" class="col-form-label"
-                    >leadEmail:</label
+                    >lead Email:</label
                   >
                   <input
                     type="text"
@@ -60,7 +60,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="recipient-name" class="col-form-label"
-                    >leadNumber:</label
+                    >lead Number:</label
                   >
                   <input
                     type="text"
@@ -72,7 +72,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="recipient-name" class="col-form-label"
-                    >leadNote:</label
+                    >lead Note:</label
                   >
                   <input
                     type="text"

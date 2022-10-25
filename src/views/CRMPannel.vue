@@ -61,15 +61,10 @@
         </td>
         <td class="table__content" data-heading="">
           <i class="fa-solid fa-trash-can" @click="deletes(lead.lid)"></i>
-
-          <!-- <i
-            class="fa-solid fa-pen-to-square"
-            type="button"
-            data-bs-toggle="modal"
-            :data-bs-target="'#update' + lead.lid"
-          ></i> -->
+          <i class="fa-solid fa-pen-to-square" type="button" data-bs-toggle="modal"
+            :data-bs-target="'#update' + lead.lid"></i>
         </td>
-        <!-- <EditModal :lead="lead" /> -->
+        <EditModal :lead="lead" />
       </tr>
     </table>
 
