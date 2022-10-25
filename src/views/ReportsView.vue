@@ -1,7 +1,7 @@
 <template>
     <v-card>
         <v-toolbar color="orange" dark flat prominent>
-            <v-text-field append-icon="mdi-microphone"  color="black" class="mx-4" flat hide-details label="Search"
+            <v-text-field append-icon="mdi-microphone" color="black" class="mx-4" flat hide-details label="Search"
                 prepend-inner-icon="mdi-magnify" solo-inverted></v-text-field>
 
             <!-- <template v-slot:extension>
@@ -19,18 +19,18 @@
             <v-speed-dial v-model="fab" :top="top" :bottom="bottom" :right="right" :left="left" :direction="direction"
                 :open-on-hover="hover" :transition="transition">
                 <template v-slot:activator>
-                    <v-btn  v-model="fab" color="black darken-2" class="overflow" dark fab>
+                    <v-btn v-model="fab" color="black darken-2" class="overflow" dark fab>
                         <v-icon v-if="fab">
                             mdi-close
                         </v-icon>
                         <v-icon v-else-if="plus">
-                        mdi-plus
+                            mdi-plus
                         </v-icon>
                         <v-icon v-else-if="pencil">
-                        mdi-pencil
+                            mdi-pencil
                         </v-icon>
                         <v-icon v-else-if="deletes">
-                        mdi-delete
+                            mdi-delete
                         </v-icon>
                         <v-icon color="" v-else-if="!dialog">
                             mdi-account-circle
@@ -44,16 +44,7 @@
                     <v-icon>mdi-plus</v-icon>
                 </v-btn>
                 <v-dialog v-model="dialog" persistent max-width="600px">
-                    <template v-slot:activator="{ on, attrs }">
-                        <!-- <v-btn
-          color="primary"
-          dark
-          v-bind="attrs"
-          v-on="on"
-        >
-          Open Dialog
-        </v-btn> -->
-                    </template>
+
                     <v-card>
                         <v-card-title>
                             <span class="text-h5">User Profile</span>
@@ -108,21 +99,21 @@
                 </v-btn>
             </v-speed-dial>
         </v-card>
-                <v-card flat>
-                    <v-data-table v-model="selected" :headers="headers" :items="desserts" :single-select="singleSelect"
-                        item-key="name" show-select class="elevation-1">
-                        <template v-slot:top>
-                            <v-switch v-model="singleSelect"  label="Single select" class="pa-3"></v-switch>
-                        </template>
-                    </v-data-table>
-                    <BottomNav/>
-                </v-card>
+        <v-card flat>
+            <v-data-table v-model="selected" :headers="headers" :items="desserts" :single-select="singleSelect"
+                item-key="name" show-select class="elevation-1">
+                <template v-slot:top>
+                    <v-switch v-model="singleSelect" label="Single select" class="pa-3"></v-switch>
+                </template>
+            </v-data-table>
+            <BottomNav />
+        </v-card>
 
         <!-- <v-tabs-items v-model="tabs">
             <v-tab-item v-for="item in items" :key="item">
             </v-tab-item>
         </v-tabs-items> -->
-     
+
     </v-card>
 </template>
 
@@ -130,14 +121,14 @@
 import BottomNav from '../components/BottomNav'
 export default {
     components: {
-      BottomNav,
+        BottomNav,
     },
     data() {
         return {
             dialog: false,
             plus: false,
-            deletes:false,
-            pencil:false,
+            deletes: false,
+            pencil: false,
             direction: 'left',
             fab: false,
             fling: true,
@@ -272,23 +263,23 @@ export default {
         },
     },
     methods: {
-        clickIcon(results){
+        clickIcon(results) {
             var icon = document.getElementById('change');
-            if(results == "plus" ){
+            if (results == "plus") {
                 this.plus = true
-                this.deletes =false
+                this.deletes = false
                 this.pencil = false
                 this.dialog = true
             }
-            if(results == "pencil"){
-                 this.pencil = true
-                 this.plus = false
-                 this.dialog = true
+            if (results == "pencil") {
+                this.pencil = true
+                this.plus = false
+                this.dialog = true
             }
-             if(results == "delete"){
-                 this.deletes = true
-                 this.plus = false
-                 this.pencil = false
+            if (results == "delete") {
+                this.deletes = true
+                this.plus = false
+                this.pencil = false
             }
         }
     }
@@ -306,8 +297,8 @@ export default {
     position: relative;
 }
 
-.overflow{
-  position: static;
+.overflow {
+    position: static;
 }
 
 .container--fluid {
@@ -316,7 +307,7 @@ export default {
 }
 
 
-.account{
+.account {
     color: orange !important;
 }
 
@@ -335,8 +326,8 @@ export default {
     color: orange !important;
 }
 
-.v-toolbar__content{
-  background-color:black;
-  color:white;
+.v-toolbar__content {
+    background-color: black;
+    color: white;
 }
 </style>

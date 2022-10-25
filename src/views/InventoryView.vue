@@ -2,15 +2,15 @@
     <v-card>
         <v-toolbar color="orange" dark flat prominent>
             <v-text-field append-icon="mdi-microphone" color="black" class="mx-4" flat hide-details label="Search"
-                prepend-inner-icon="mdi-magnify" solo-inverted></v-text-field>
+                prepend-inner-icon="mdi-magnify" solo-inverted></v-text-field> -->
 
-            <!-- <template v-slot:extension>
+             <template v-slot:extension>
                 <v-tabs v-model="tabs" centered>
                     <v-tab v-for="item in items" :key="item">
                         {{ item.title }}
                     </v-tab>
                 </v-tabs>
-            </template> -->
+            </template> 
         </v-toolbar>
         <v-card id="create">
             <v-container fluid>
@@ -167,7 +167,7 @@ export default {
             desserts: [
                 {
                     name: 'Frozen Yogurt',
-                    total:''
+                    total: ''
                 },
 
 
