@@ -5,7 +5,7 @@ import swal from 'sweetalert';
 import router from '@/router';
 
 
-
+const api = 'https://proptechapi.herokuapp.com/'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -37,12 +37,12 @@ export default new Vuex.Store({
   },
   actions: {
     async getLeads(context) {
-      let fetched = await fetch('http://localhost:1517/leads');
+      let fetched = await fetch(api +'leads');
       let res = await fetched.json()
       context.commit('setLeads', res.leads)
     },
     async getLead(context, id) {
-      let fetched = await fetch('http://localhost:1517/leads/' + id);
+      let fetched = await fetch(api +'leads/' + id);
       let res = await fetched.json();
       context.commit('setLeads', res.results)
     },
@@ -128,46 +128,8 @@ export default new Vuex.Store({
         .then((res) => res.json())
         .then((data) => context.state.sellers = data.buyers)
     },
-    async getProduct(context, id) {
-      console.log('hi');
-      fetch(api + 'products/' + id)
-        .then((res) => res.json())
-        .then((data) => console.log(context.state.product = data.product))
-      
-    },
-    // createLead: async (context, payload) => {
-    //   console.log("Hi")
-    //   try {
-    //     await fetch('http://localhost:1517/leads', {
-    //       method: "POST",
-    //       body: JSON.stringify(payload),
-    //       headers: {
-    //         'Content-type': 'application/json; charset=UTF-8'
-    //       }
-    //     })
-    //       .then((res) => res.json())
-    //       .then((data) => {
-
-    //         let { leads } = data;
-    //         console.log(user);
-    //         context.commit("setLeads", leads);
-    //         // .then(() => console.log(context.state.user))
-    //         // alert('Login in success')
-    //         // router.push("/products");
-    //       })
-    //       .catch((err) => {
-    //         context.commit('setErrMsg', err);
-    //       });
-
-
-    //   } catch (e) {
-    //     context.commit('setErrMsg', e.message)
-    //   }
-
-
-    // },
     async createLead(context, payload) {
-      fetch('http://localhost:1517/leads', {
+      fetch(api +'leads', {
           method: 'POST',
           body: JSON.stringify(payload),
           headers: {
@@ -186,49 +148,23 @@ export default new Vuex.Store({
           // context.commit('setProducts', data.msg)
         })
     },
-    editProduct: async (context, payload) => {
-      console.log("Hi")
-      try {
-        await fetch(api + 'products/' + payload.id, {
-          method: "PUT",
-          body: JSON.stringify(
-            {
-              prodTitle: payload.prodTitle,
-              prodCat: payload.prodCat,
-              prodStock: payload.prodStock,
-              prodDesc: payload.prodDesc,
-              prodColor: payload.prodColor,
-              prodPrice: payload.prodPrice,
-              prodImg1: payload.prodImg1,
-            }
-          ),
-          headers: {
-            'Content-type': 'application/json; charset=UTF-8'
-          }
-        })
-          .then((res) => res.json())
-          .then((data) => {
-
-            let { product } = data;
-            console.log(user);
-            context.commit("setProduct", product);
-            // .then(() => console.log(context.state.user))
-            // alert('Login in success')
-            // router.push("/products");
-          })
-          .catch((err) => {
-            context.commit('setErrMsg', err);
-          });
-
-
-      } catch (e) {
-        context.commit('setErrMsg', e.message)
-      }
-
-
-    },
+    async updateLead(context,payload){
+      const {lid, entryType, leadName, leadEmail, leadNumber, leadNote, uID} = payload;
+      fetch(api +'leads/' + lid, {
+        method: "PATCH",
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          alert(data.msg);
+          context.dispatch("getLeads", data.msg);
+        });
+      },
     async deleteLead(context, id) {
-      fetch("http://localhost:1517/leads/" + id, {
+      fetch(api +'leads/' + id, {
       // fetch("https://cyber-loox.herokuapp.com/products/" + id, {
           method: "DELETE",
           headers: {

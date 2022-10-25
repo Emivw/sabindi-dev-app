@@ -118,12 +118,13 @@ props:['lead'],
 methods:{
 update() {
     this.$store.dispatch("updateLead", {
-            entryType: this.entryType,
-            leadName: this.leadName,
-            leadEmail: this.leadEmail,
-            leadNumber: this.leadNumber,
-            leadNote: this.leadNote,
-            uID: this.uID
+            lid:this.lead.lid,
+            entryType: this.lead.entryType,
+            leadName: this.lead.leadName,
+            leadEmail: this.lead.leadEmail,
+            leadNumber: this.lead.leadNumber,
+            leadNote: this.lead.leadNote,
+            uID: this.lead.uID
         });
    }
 }
