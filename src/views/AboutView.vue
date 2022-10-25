@@ -3,15 +3,16 @@
     <v-row class="mb-6">
     <v-col  v-for="tile in tiles" :key="tile.title">
       <v-card
-    class="mx-auto"
+    class="mx-auto card"
     max-width="344"
     color="black"
+    :to="tile.to"
   >      <v-btn value="recent" color="orange">
       <v-icon>{{tile.icon}}</v-icon>
     </v-btn>
     <v-card-text>
 
-      <p class="text-h4">
+      <p class="text-h4 text-center">
        {{tile.title}}
       </p>
     </v-card-text>
@@ -19,9 +20,8 @@
       <v-btn
         text
         color="orange accent-3"
-        :to="tile.to"
       >
-        Learn More
+  
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -172,5 +172,11 @@
     line-height: inherit;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.card {
+  width: 80vw;
+  height: 14vh;
+
 }
 </style>
