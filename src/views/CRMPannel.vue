@@ -17,6 +17,7 @@
         ADD <i class="fa-solid fa-plus"></i>
       </button>
       <AddModal />
+      
     </div>
 
 
@@ -84,7 +85,6 @@ export default {
         { title: 'buyers' },
         { title: 'sellers' },
         { title: 'renting' },
-        { title: 'letting' },
         { title: 'maintenance' },
       ],
     }
