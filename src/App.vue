@@ -23,6 +23,7 @@
         <v-list-item
           v-for="item in items"
           :key="item.title"
+          :to="item.to"
           link
         >
           <v-list-item-icon>
@@ -59,7 +60,8 @@ import BottomNav from '@/components/BottomNav.vue'
       data () {
     return {
       items: [
-        { title: 'User Profile', icon: 'mdi-account-circle-outline' },
+        { title: 'User Profile', icon: 'mdi-account-circle-outline', to:'/userprofile' },
+        { title: 'Settings', icon: 'mdi-cog-outline', to:'/settings' }
       ],
       drawer: null,
     }
