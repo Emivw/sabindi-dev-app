@@ -11,7 +11,7 @@
                     <div class="info-text">Phone No :</div>
                 </div>
                 <div class="info-text-holder col-7">
-                    <div class="info-text">{{ lead.lid }}</div>
+                    <div class="info-text">{{ id }}</div>
                     <div class="info-text">{{ lead.entryType }}</div>
                     <div class="info-text">{{ lead.leadName }}</div>
                     <div class="info-text">{{ lead.leadEmail }}</div>
@@ -26,7 +26,7 @@
         <div class="f-holder">
             <i class="fa-solid fa-trash-can" @click="deletes(this.id)"></i>
             <i class="fa-solid fa-pen-to-square" type="button" data-bs-toggle="modal"
-                :data-bs-target="'#update' + lead.lid"></i>
+                :data-bs-target="'#update'+lead.lid"></i>
             <EditModal :lead="lead" />
 
         </div>

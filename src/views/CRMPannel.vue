@@ -65,7 +65,7 @@
           <i class="fa-solid fa-pen-to-square" type="button" data-bs-toggle="modal"
             :data-bs-target="'#update' + lead.lid"></i>
         </td>
-        <EditModal  />
+        <EditModal :lead="lead" />
       </tr>
     </table>
 

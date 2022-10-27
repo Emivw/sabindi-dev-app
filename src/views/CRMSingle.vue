@@ -27,53 +27,66 @@
                         {{ lead.leadName }}
                     </td>
                     <td class="table__content" data-heading="">
-                        <i class="fa-solid fa-trash-can" @click="deletes(lead.lid)"></i>
-                        <i class="fa-solid fa-pen-to-square" type="button" data-bs-toggle="modal"
-                            :data-bs-target="'#update' + lead.lid"></i>
-                    </td>
-                    <EditModal :lead="lead" />
-                </tr>
+          <i class="fa-solid fa-trash-can mx-5" @click="deletes(lead.lid)"></i>
+          <i class="fa-solid fa-pen-to-square mx-5" type="button" data-bs-toggle="modal"
+            :data-bs-target="'#update' + lead.lid"></i>
+                <router-link :to="{ name: 'SingleCRM', params: { id: lead.lid } }" class="router-link">
+            <i class="fa-solid fa-info mx-5" type="button" ></i>
+            </router-link>
+        </td>
+        <EditModal :lead="lead" />
+      </tr>
             </tbody>
         </table>
 
-        <div class="card-holder" v-for="lead in leads" :key="lead.lid">
-            <router-link :to="{ name: 'SingleCRM', params: { id: lead.lid } }" class="router-link">
+        <!-- <div class="card-holder" v-for="lead in leads" :key="lead.lid">
+    
                 <div class="card">
                     <div class="l_name">{{ lead.leadName }}</div>
                     <div class="l_email">{{ lead.leadEmail }}</div>
                     <div class="l_type">{{ lead.entryType }}</div>
                 </div>
-            </router-link>
-        </div>
+        </div> -->
         <BottomNav />
     </v-card>
 </template>
 
 <script>
-import BottomNav from "../components/BottomNav.vue"
 import EditModal from "../components/EditModal.vue";
 import AddModal from "../components/AddModal.vue";
-
+import BottomNav from "@/components/BottomNav.vue";
 
 export default {
-    props: ['lead'],
-    components: {
-        BottomNav,
-        EditModal,
-        AddModal
-    },
+  components: { EditModal, AddModal, BottomNav },
 
-    mounted() {
-        return this.$store.dispatch("getLeads");
-        // this.$store.dispatch("getSellers");
-    },
-    computed: {
-        leads() {
-            return this.$store.state.leads;
-        }
-    },
+  data() {
+    return {
+      items: [
+        { title: 'buyers' },
+        { title: 'sellers' },
+        { title: 'renting' },
+        { title: 'maintenance' },
+      ],
+    }
+  },
+  mounted() {
+
+    return this.$store.dispatch("getLeads");
+    // this.$store.dispatch("getSellers");
+  },
+  computed: {
+    leads() {
+      return this.$store.state.leads;
+    }
+  },
+  methods: {
+    deletes(id) {
+      this.$store.dispatch("deleteLead", id);
+    }
+  }
 }
 </script>
+
 
 <style scoped>
 .card-holder {
