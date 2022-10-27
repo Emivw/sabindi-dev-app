@@ -133,14 +133,15 @@ return {
 }, 
 methods:{
 add() {
-       this.$store.dispatch("createLead", {
+     let payload = {
             entryType: this.entryType,
             leadName: this.leadName,
             leadEmail: this.leadEmail,
             leadNumber: this.leadNumber,
             leadNote: this.leadNote,
             uID: this.uID
-        });
+     }
+       this.$store.dispatch("createLead", payload);
     }
 }
 }

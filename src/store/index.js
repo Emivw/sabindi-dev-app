@@ -3,6 +3,7 @@ import Vuex from "vuex";
 // ES6 Modules or TypeScript
 import swal from "sweetalert";
 import router from "@/router";
+import createPersistedState from "vuex-persistedstate";
 
 const api = "https://proptechapi.herokuapp.com/";
 Vue.use(Vuex);
@@ -70,10 +71,10 @@ export default new Vuex.Store({
             swal({
               icon: "success",
               title: "Registered",
-              buttons: "OK",
-            });
-            context.commit("setUser", payload);
-            console.log(data);
+              buttons: "OK"
+            })
+            context.commit('setUser', payload)
+            router.push('/about')
           }
         });
     },
@@ -106,11 +107,10 @@ export default new Vuex.Store({
                 icon: "success",
                 title: `Welcome Builders, ${data.msg[0].userName}`,
                 buttons: "OK",
-                closeOnClickOutside: false,
-              });
-
-              context.commit("setUser", data.msg[0]);
-              router.push("/about");
+                closeOnClickOutside: false
+              })
+              context.commit('setUser', data.msg[0]);
+              router.push('/about')
             }
           }
         });
@@ -157,8 +157,14 @@ export default new Vuex.Store({
       })
         .then((res) => res.json())
         .then((data) => {
-          alert(data.msg);
+          if(data.msg == 'Edited'){
+          swal({
+            icon: "success",
+            title: "The lead was edited successfully",
+            button: "OK"
+          })
           context.dispatch("getLeads", data.msg);
+        }g
         });
     },
     async deleteLead(context, id) {
@@ -181,5 +187,7 @@ export default new Vuex.Store({
         });
     },
   },
-  modules: {},
-});
+  modules: {
+  },
+  plugins: [createPersistedState()]
+})

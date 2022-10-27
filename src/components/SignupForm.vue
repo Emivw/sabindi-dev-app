@@ -224,7 +224,7 @@ form {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 0 50px;
+  padding: 0 10px;
   height: 100%;
   text-align: center;
 }
@@ -245,7 +245,7 @@ input {
   overflow: hidden;
   width: 768px;
   max-width: 100%;
-  min-height: 480px;
+  height: 1000px;
 }
 
 .form-container {
@@ -410,4 +410,19 @@ footer a {
   }
 }
 
+
+.overlay-panel[data-v-943f3ba8] {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 5px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
 </style>

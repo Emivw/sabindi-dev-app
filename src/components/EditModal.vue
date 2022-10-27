@@ -80,7 +80,7 @@
                </div>
                <div class="mb-3">
                  <label for="recipient-name" class="col-form-label"
-                   >Lead Note:</label
+                   >Uid:</label
                  >
                  <input
                    type="text"

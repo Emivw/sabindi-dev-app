@@ -34,6 +34,13 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+      <template v-slot:append>
+        <div class="pa-2">
+          <v-btn block @click="logOut" to="/signup">
+            Logout
+          </v-btn>
+        </div>
+      </template>
     </v-navigation-drawer>
 
     <v-app-bar app>
@@ -72,6 +79,13 @@ import BottomNav from '@/components/BottomNav.vue'
    user(){
     return this.$store.state.user
    }
+ },
+ methods:{
+  logOut(){
+   return (this.$store.state.user= null ,
+   localStorage.removeItem('vuex')
+   )
+    }
  }
   }
 </script>
