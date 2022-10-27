@@ -23,6 +23,7 @@
         <v-list-item
           v-for="item in items"
           :key="item.title"
+          :to="item.to"
           link
         >
           <v-list-item-icon>
@@ -66,8 +67,8 @@ import BottomNav from '@/components/BottomNav.vue'
       data () {
     return {
       items: [
-        { title: 'Help', icon: 'mdi-help' },
-        { title: 'Info', icon: 'mdi-information' }
+        { title: 'User Profile', icon: 'mdi-account-circle-outline', to:'/userprofile' },
+        { title: 'Settings', icon: 'mdi-cog-outline', to:'/settings' }
       ],
       drawer: null,
     }
@@ -155,6 +156,8 @@ import BottomNav from '@/components/BottomNav.vue'
     color: white !important;
 }
 
+
+
 .v-input--selection-controls__ripple{
   color:orange;
 }
@@ -233,6 +236,11 @@ import BottomNav from '@/components/BottomNav.vue'
 
 .mdi-cash-multiple::before {
     content: "\F0116";
+    color: white !important;
+}
+
+.mdi-home::before {
+    content: "\F02DC";
     color: white !important;
 }
 

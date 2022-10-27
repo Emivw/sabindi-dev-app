@@ -44,8 +44,8 @@
       drawer: null,
       tiles: [
       {
-        title: 'CRM',
-        icon: ' mdi-account',
+        title: 'Leads',
+        icon: 'mdi-home',
         text: 'Customer Relational Manager',
         category: [
           'admin'
