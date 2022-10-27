@@ -17,7 +17,7 @@
         ADD <i class="fa-solid fa-plus"></i>
       </button>
       <AddModal />
-      
+
     </div>
 
 
@@ -65,7 +65,7 @@
           <i class="fa-solid fa-pen-to-square" type="button" data-bs-toggle="modal"
             :data-bs-target="'#update' + lead.lid"></i>
         </td>
-        <EditModal :lead="lead" />
+        <EditModal  />
       </tr>
     </table>
 
@@ -90,6 +90,7 @@ export default {
     }
   },
   mounted() {
+
     return this.$store.dispatch("getLeads");
     // this.$store.dispatch("getSellers");
   },

@@ -1,55 +1,47 @@
 <template>
     <div>
-        <table class="table">
-            <tr>
-                <th class="table__heading">lid</th>
-                <th class="table__heading">Entry Type</th>
-                <th class="table__heading">Lead Name</th>
-                <th class="table__heading">Lead Email</th>
-                <th class="table__heading">Lead Number</th>
-                <th class="table__heading">Lead Note</th>
-                <th class="table__heading">Created By</th>
-                <th class="table__heading">Updated By</th>
-                <th class="table__heading">uid</th>
-            </tr>
-            <tr class="table__row" v-for="lead in lead" :key="lead.lid">
-                <td class="table__content" data-heading="lid">
-                    {{ lead.lid }}
-                </td>
-                <td class="table__content" data-heading="Entry Type">{{ lead.entryType }}</td>
-                <td class="table__content" data-heading="Lead Name">
-                    {{ lead.leadName }}
-                </td>
-                <td class="table__content" data-heading="Lead Email">
-                    {{ lead.leadEmail }}
-                </td>
-                <td class="table__content" id="image" data-heading="Lead Number">
-                    {{ lead.leadNumber }}
-                </td>
-                <td class="table__content" data-heading="Lead Note">
-                    {{ lead.leadNote }}
-                </td>
-                <td class="table__content" data-heading="Created By">
-                    {{ lead.CreatedBy }}
-                </td>
-                <td class="table__content" data-heading="Updated By">
-                    {{ lead.UpdatedBy }}
-                </td>
-                <td class="table__content" data-heading="uid">
-                    {{ lead.uID }}
-                </td>
-            </tr>
-        </table>
+        <div class="info-holder" v-for="lead in lead" :key="lead.lid">
+            <h2 class="text-center">Lead Information</h2>
+            <div class="seperator d-flex ">
+                <div class="info-title-holder col-5">
+                    <div class="info-text">Lid :</div>
+                    <div class="info-text">Entry Type :</div>
+                    <div class="info-text">Name :</div>
+                    <div class="info-text">Email :</div>
+                    <div class="info-text">Phone No :</div>
+                </div>
+                <div class="info-text-holder col-7">
+                    <div class="info-text">{{ lead.lid }}</div>
+                    <div class="info-text">{{ lead.entryType }}</div>
+                    <div class="info-text">{{ lead.leadName }}</div>
+                    <div class="info-text">{{ lead.leadEmail }}</div>
+                    <div class="info-text">{{ lead.leadNumber }}</div>
+                </div>
+            </div>
+            <div class="a-notes">
+                <h4 class="text-center">Additional notes</h4>
+                <p>{{ lead.leadNote }}</p>
+            </div>
+        </div>
+        <div class="f-holder">
+            <i class="fa-solid fa-trash-can" @click="deletes(this.id)"></i>
+            <i class="fa-solid fa-pen-to-square" type="button" data-bs-toggle="modal"
+                :data-bs-target="'#update' + lead.lid"></i>
+            <EditModal :lead="lead" />
 
-        <div></div>
+        </div>
+
     </div>
 </template>
   
 <script>
-
+import EditModal from "../components/EditModal.vue";
 export default {
     props: ['id'],
 
+    components: {
+        EditModal
+    },
     // data() {
     //     return {
     //         items: [
@@ -62,8 +54,8 @@ export default {
     // },
 
     mounted() {
-        console.log(this.$store.state.leadead)
-        return this.$store.dispatch("getLead", this.id);
+        console.log(this.id);
+        return this.$store.dispatch("getLead",this.id);
         // this.$store.dispatch("getSellers");
     },
     computed: {
@@ -80,83 +72,62 @@ export default {
 }
 </script>
 
-td,
-th {
-    padding: 8px;
-    padding: 0.5rem;
-}
-
-
-td,
-th {
-    padding: 8px;
-    padding: 0.5rem;
-}
-
-th {
-    text-align: left;
-    font-weight: 300;
-    font-size: 20px;
-    font-size: 1.25rem;
-}
-
-td {
-    font-family: "Avenir Next", "Segoe UI", "Lucida Grande", sans-serif;
-}
-
-.table {
-    width: 100%;
-    padding: 16px;
-    padding: 1rem;
-}
-
-.table__heading {
-    border-bottom: 2px solid #ffb23edf;
-}
-
-i.fa-solid.fa-trash-can {
-    padding-right: 10px;
-}
-
-@media (max-width: 32rem) {
-    .table__heading {
-        display: none;
+<style scoped>
+/* Small phones */
+@media only screen and (max-width:576px) {
+    .info-holder {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
     }
 
-    .table__content {
-        display: block;
-        padding: 0.5rem 0;
+    .seperator {
+        margin: 15px 0px 15px 0px;
+
     }
 
-    .table__row {
-        margin: 0.25rem 1rem;
-        padding: 0.5rem 0;
-        display: block;
-        border-bottom: 2px solid orange;
+    .info-title-holder>.info-text {
+        font-weight: bold;
     }
 
-    .table__content:before {
-        content: attr(data-heading);
-        display: inline-block;
-        width: 5rem;
-        margin-right: 1.2rem;
-        color: #999;
-        font-size: 0.75rem;
-        font-weight: 700;
-        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 2px;
+    .info-text {
+        word-break: break-all;
+
+    }
+
+}
+
+
+/* Bigger Phones */
+@media only screen and (min-width:576px) {
+
+    .info-holder {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .seperator {
+        margin: 15px 0px 15px 0px;
+
+    }
+
+    .info-title-holder>.info-text {
+        font-weight: bold;
+    }
+
+    .info-text {
+        word-break: break-all;
+
     }
 }
 
-h1,
-h4 {
-    margin: 50px auto 50px auto;
-    text-align: center;
-}
+/* Tablets */
+@media only screen and (min-width:768px) {}
 
-h4 {
-    margin: 50px auto 50px auto;
-    text-align: center;
-}
+/* Laptops */
+@media only screen and (min-width:992px) {}
+
+/* Desktops */
+@media only screen and (min-width:1200px) {}
 </style>

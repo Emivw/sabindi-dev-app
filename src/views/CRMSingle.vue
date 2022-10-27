@@ -19,15 +19,13 @@
             </thead>
             <tbody v-for="lead in leads" :key="lead.lid">
                 <tr class="table__row">
-                    <router-link :to="{ name: 'SingleCRM', params: { id: lead.lid } }">
-                        <td class="table__content" data-heading="lid">
-                            {{ lead.lid }}
-                        </td>
-                        <td class="table__content" data-heading="Entry Type">{{ lead.entryType }}</td>
-                        <td class="table__content" data-heading="Lead Name">
-                            {{ lead.leadName }}
-                        </td>
-                    </router-link>
+                    <td class="table__content" data-heading="lid">
+                        {{ lead.lid }}
+                    </td>
+                    <td class="table__content" data-heading="Entry Type">{{ lead.entryType }}</td>
+                    <td class="table__content" data-heading="Lead Name">
+                        {{ lead.leadName }}
+                    </td>
                     <td class="table__content" data-heading="">
                         <i class="fa-solid fa-trash-can" @click="deletes(lead.lid)"></i>
                         <i class="fa-solid fa-pen-to-square" type="button" data-bs-toggle="modal"
@@ -37,6 +35,16 @@
                 </tr>
             </tbody>
         </table>
+
+        <div class="card-holder" v-for="lead in leads" :key="lead.lid">
+            <router-link :to="{ name: 'SingleCRM', params: { id: lead.lid } }" class="router-link">
+                <div class="card">
+                    <div class="l_name">{{ lead.leadName }}</div>
+                    <div class="l_email">{{ lead.leadEmail }}</div>
+                    <div class="l_type">{{ lead.entryType }}</div>
+                </div>
+            </router-link>
+        </div>
         <BottomNav />
     </v-card>
 </template>
@@ -67,86 +75,34 @@ export default {
 }
 </script>
 
-
-
 <style scoped>
-td,
-th {
-    padding: 8px;
-    padding: 0.5rem;
+.card-holder {
+    display: flex;
+    justify-content: center;
 }
 
 
-td,
-th {
-    padding: 8px;
-    padding: 0.5rem;
-}
-
-th {
-    text-align: left;
-    font-weight: 300;
-    font-size: 20px;
-    font-size: 1.25rem;
-}
-
-td {
-    font-family: "Avenir Next", "Segoe UI", "Lucida Grande", sans-serif;
-}
-
-.table {
-    width: 100%;
-    padding: 16px;
-    padding: 1rem;
-}
-
-.table__heading {
-    border-bottom: 2px solid #ffb23edf;
-}
-
-i.fa-solid.fa-trash-can {
-    padding-right: 10px;
-}
-
-@media (max-width: 32rem) {
-    .table__heading {
-        display: none;
-    }
-
-    .table__content {
-        display: block;
-        padding: 0.5rem 0;
-    }
-
-    .table__row {
-        margin: 0.25rem 1rem;
-        padding: 0.5rem 0;
-        display: block;
-        border-bottom: 2px solid orange;
-    }
-
-    .table__content:before {
-        content: attr(data-heading);
-        display: inline-block;
-        width: 5rem;
-        margin-right: 1.2rem;
-        color: #999;
-        font-size: 0.75rem;
-        font-weight: 700;
-        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 2px;
+/* Small phones */
+@media only screen and (max-width:576px) {
+    .card {
+        align-items: center;
+        margin-bottom: 15px;
+        width: 200px;
+        padding: 5px;
+        border-radius: 10px;
     }
 }
 
-h1,
-h4 {
-    margin: 50px auto 50px auto;
-    text-align: center;
-}
+/* Bigger Phones */
+@media only screen and (min-width:576px) {}
 
-h4 {
-    margin: 50px auto 50px auto;
-    text-align: center;
-}
+/* Tablets */
+@media only screen and (min-width:768px) {}
+
+/* Laptops */
+@media only screen and (min-width:992px) {}
+
+/* Desktops */
+@media only screen and (min-width:1200px) {}
 </style>
+
