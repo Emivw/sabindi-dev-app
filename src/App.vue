@@ -82,7 +82,8 @@ import BottomNav from '@/components/BottomNav.vue'
  },
  methods:{
   logOut(){
-   return (this.$store.state.user= null 
+   return (this.$store.state.user= null ,
+   localStorage.removeItem('vuex')
    )
     }
  }
