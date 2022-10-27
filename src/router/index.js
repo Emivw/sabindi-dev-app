@@ -38,13 +38,23 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../components/SignupForm.vue"),
   },
   {
-    path: "/leads",
-    name: "leads",
+    path: "/crm",
+    name: "crm",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/CRMSingle.vue"),
+  },
+  {
+    path: "/crm/:id",
+    name: "SingleCRM",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../components/SingleView.vue"),
+    props: true,
   },
   {
     path: "/po",
