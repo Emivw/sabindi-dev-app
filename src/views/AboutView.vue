@@ -59,7 +59,7 @@
         category: [
           'admin'
         ],
-        to: '/srm'
+        to: '/darall'
       },
       {
         title: 'WO',

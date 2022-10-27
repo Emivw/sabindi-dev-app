@@ -53,7 +53,7 @@
     <v-main>
       <router-view/>
   
-    <!-- <BottomNav v-if="user"/> -->
+    <BottomNav v-if="user" style="margin-top:150%" />
       <!--  -->
     </v-main>
     
